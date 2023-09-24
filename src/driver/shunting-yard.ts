@@ -15,26 +15,11 @@ const isLeftAssociative: { [key: string]: boolean } = {
 export function shuntingYard(infixExpression: string): string[] {
   const outputQueue: string[] = [];
   const operatorStack: string[] = [];
-  // '3 * 4 - 2 * ( 2 + ( 2 + 1 ) )'
-  // oQ = [3, 4, *, 2, 2, 2, 1, +, +, *, -]
-  // oS = [-, *]
   const tokens = infixExpression.split(" ");
   for (const token of tokens) {
-    console.log(token);
     if (!isNaN(Number(token))) {
       outputQueue.push(token);
     } else if (token in operatorPrecedence) {
-      console.log({
-        "operatorStack.length > 0 &&": operatorStack.length > 0,
-        "isLeftAssociative[token]": isLeftAssociative[token],
-        "opPrecedence[token]": operatorPrecedence[token],
-        "opStack.length": operatorStack.length,
-        "opPrecedence[opStack.length - 1]":
-          operatorPrecedence[operatorStack.length - 1],
-        a:
-          operatorPrecedence[token] <=
-          operatorPrecedence[operatorStack.length - 1],
-      });
       while (
         operatorStack.length > 0 &&
         token !== "(" &&
