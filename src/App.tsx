@@ -1,13 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
-import { shuntingYard } from './driver/shunting-yard';
-import { buildASTFromRPN, evaluateAST } from './driver/abstract-syntax-tree';
+import { ButtonDisplay } from './components/ButtonDisplay';
+import { ThemeToggler } from './components/ThemeToggler';
 
 function App() {
-  const result = evaluateAST(buildASTFromRPN(shuntingYard('3 * 4 - 2 * ( 2 + ( 2 + 1 ) )')))
+  const [expression, setExpression] = useState('')
+  const [theme, setTheme] = useState('theme-1')
   return (
-    <div className="App">
-      <h1>Result: {result}</h1>
+    <div className={`App ${theme}`}>
+      <body>
+      <div className="container">
+        <header>
+          <div className="logo">
+            calc
+          </div>
+          {ThemeToggler(theme, setTheme)}
+        </header>
+        <div className="display" data-display> 
+          {expression}
+        </div>
+        {ButtonDisplay({expression, setExpression})}
+      </div>
+      </body>
+
     </div>
   );
 }

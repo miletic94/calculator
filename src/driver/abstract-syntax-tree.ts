@@ -1,9 +1,4 @@
-enum Operator {
-  plus = "+",
-  minus = "-",
-  multiplication = "*",
-  division = "/",
-}
+import { Operator } from "../enum/operator.enum";
 
 class TreeNode {
   value: string;
