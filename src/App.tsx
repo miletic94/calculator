@@ -11,14 +11,14 @@ function App() {
   return (
     <div className={`App ${theme}`}>
       <body>
-      <div className="container">
-        <header>
-          {Logo()}
-          {ThemeToggler(theme, setTheme)}
-        </header>
-        {Display(expression) }
-        {ButtonDisplay({expression, setExpression})}
-      </div>
+        <div className="container">
+          <header>
+            {Logo()}
+            {ThemeToggler(theme, setTheme)}
+          </header>
+          {Display(expression) }
+          {ButtonDisplay({expression, setExpression})}
+        </div>
       </body>
 
     </div>
