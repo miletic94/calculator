@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './App.css';
 import { ButtonDisplay } from './components/ButtonDisplay';
 import { ThemeToggler } from './components/ThemeToggler';
+import { Display } from './components/Display';
+import { Logo } from './components/Logo';
 
 function App() {
   const [expression, setExpression] = useState('')
@@ -11,14 +13,10 @@ function App() {
       <body>
       <div className="container">
         <header>
-          <div className="logo">
-            calc
-          </div>
+          {Logo()}
           {ThemeToggler(theme, setTheme)}
         </header>
-        <div className="display" data-display> 
-          {expression}
-        </div>
+        {Display(expression) }
         {ButtonDisplay({expression, setExpression})}
       </div>
       </body>

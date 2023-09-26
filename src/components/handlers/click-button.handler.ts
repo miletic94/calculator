@@ -46,15 +46,19 @@ export const handleButtonClick: HandleButtonClickFunction = (
   }
 
   if (value === "=") {
-    if (expression === "" || expression === undefined) {
+    try {
+      if (expression === "" || expression === undefined) {
+        return;
+      }
+      if (expression[expression.length - 1] === " ") {
+        return;
+      }
+      setExpression(
+        String(evaluateAST(buildASTFromRPN(shuntingYard(expression))))
+      );
       return;
+    } catch (e) {
+      window.alert(e);
     }
-    if (expression[expression.length - 1] === " ") {
-      return;
-    }
-    setExpression(
-      String(evaluateAST(buildASTFromRPN(shuntingYard(expression))))
-    );
-    return;
   }
 };
